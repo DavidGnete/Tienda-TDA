@@ -17,7 +17,7 @@ export const NavbarMenu = () => {
         <span className='font-bold'> | TDA</span>
       </div>
 
-      <div className='flex gap-10 items-center text-white font-bold'>
+      <div className='flex gap-10 items-center text-gray font-bold'>
         <span>
           Inicio
         </span>
@@ -30,7 +30,7 @@ export const NavbarMenu = () => {
 
         <button
         onClick={openSiMenu}
-        className="hidden sm:block m-2 p-2 hover:bg-gray-100 rounded-md"
+        className="hidden sm:block m-2 p-2 hover:bg-gray-100 rounded-md cursor-pointer"
         >Menu</button>
       </div>
       

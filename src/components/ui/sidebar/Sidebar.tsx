@@ -44,6 +44,7 @@ export const Sidebar = () => {
         <IoHomeOutline  size={30}/>
         <span className='ml-3 text-xl'>Home</span>
     </Link>
+    <div className="w-full h-px bg-gray-300 my-10"></div>
 
     <div className='flex flex-col mt-10 p-2'>
     <span className='ml-3 text-xl bg-blue-100 rounded w-full font-semibold'>Are you a student? Sell your products here</span>
