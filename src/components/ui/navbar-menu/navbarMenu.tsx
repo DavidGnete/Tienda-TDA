@@ -2,9 +2,11 @@
 import React from 'react'
 import { useBearStore } from '@/store';
 import { useEffect } from 'react';
+import { signIn, signOut, useSession } from "next-auth/react";
 import Link from 'next/link';
 
 export const NavbarMenu = () => {
+  const { data: session } = useSession(); 
   const openSiMenu = useBearStore((state) => state.openSideMenu);
 
 
@@ -18,16 +20,6 @@ export const NavbarMenu = () => {
       </div>
 
       <div className='flex gap-10 items-center text-gray font-bold'>
-        <span>
-          Inicio
-        </span>
-        <Link href="/login">
-          Publica tu Producto
-        </Link>
-        <Link href="/login" >
-          Inicia Sesion
-        </Link>
-
         <button
         onClick={openSiMenu}
         className="hidden sm:block m-2 p-2 hover:bg-gray-100 rounded-md cursor-pointer"

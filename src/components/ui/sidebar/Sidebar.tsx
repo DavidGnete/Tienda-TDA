@@ -3,12 +3,32 @@ import { useBearStore } from '@/store';
 import Link from 'next/link';
 import clsx from 'clsx';
 import React from 'react'
-import { IoCashOutline, IoCloseOutline, IoHomeOutline, IoListOutline, IoLogInOutline, IoLogOutOutline } from 'react-icons/io5'
-import { TiHomeOutline } from 'react-icons/ti';
+import { IoCashOutline,
+    IoCloseOutline,
+    IoHomeOutline,
+    IoListCircle,
+    IoListOutline,
+    IoLogInOutline,
+    IoLogOutOutline, 
+    IoPulseOutline} from 'react-icons/io5'
+    import { HiOutlineClipboardList,} from 'react-icons/hi';
+import { Logout } from '@/actions';
+import { useSession, signOut } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { LuListPlus } from 'react-icons/lu';
 
 export const Sidebar = () => {
     const isSideMenuOpen = useBearStore((state) => state.IsSiMenuOpen);
     const closeMenu = useBearStore((state) => state.CloseMenu);
+
+
+    const { data: session, status } = useSession();
+    
+    const isAuthenticatedSuperAdmin = !!(session?.user.role === "super-admin");
+    const isAuthenticated = !!session?.user.role;
+
+  const router = useRouter();
+
   return (
     <div>
         {isSideMenuOpen && (
@@ -34,35 +54,28 @@ export const Sidebar = () => {
     size={50}
     className='absolute top-5 right-5 cursor-pointer'
     onClick={() => closeMenu()}/>
-    
-   {/*  Buscador de filtro no se puso */}
 
+    {}
+
+   {/*  Buscador de filtro no se puso */}
+    {isAuthenticated && (
+        <>
+        
     <Link 
     href="/"
     className='flex items-center mt-10 p-2 hover:bg-gray-300 rounded transition-all'
     >
         <IoHomeOutline  size={30}/>
-        <span className='ml-3 text-xl'>Home</span>
+        <span className='ml-3 text-xl'>Inicio</span>
     </Link>
     <div className="w-full h-px bg-gray-300 my-10"></div>
-
-    <div className='flex flex-col mt-10 p-2'>
-    <span className='ml-3 text-xl bg-blue-100 rounded w-full font-semibold'>Are you a student? Sell your products here</span>
-    <Link 
-    href="/"
-    className='flex items-center  hover:bg-gray-300 rounded transition-all'
-    >
-    <IoLogInOutline  size={40}/>
-    <span className='ml-3 text-xl'>Login</span>
-    </Link>
-    </div>
 
     <Link 
     href="/"
     className='flex items-center mt-10 p-2 hover:bg-gray-300 rounded transition-all'
     >
-        <IoCashOutline  size={30}/>
-        <span className='ml-3 text-xl'>Sell a Product</span>
+        <LuListPlus  size={30}/>
+        <span className='ml-3 text-xl'>Publicar</span>
     </Link>
 
     
@@ -71,23 +84,51 @@ export const Sidebar = () => {
     className='flex items-center mt-10 p-2 hover:bg-gray-300 rounded transition-all'
     >
         <IoListOutline  size={30}/>
-        <span className='ml-3 text-xl'>My Products</span>
+        <span className='ml-3 text-xl'>Mis Productos</span>
     </Link>
 
-    
+        </>
+    )}
+
+    {isAuthenticatedSuperAdmin && (
+        <>
     <Link 
     href="/"
     className='flex items-center mt-10 p-2 hover:bg-gray-300 rounded transition-all'
     >
-        <IoLogOutOutline  size={30}/>
-        <span className='ml-3 text-xl'>Logout</span>
+        <HiOutlineClipboardList  size={30}/>
+        <span className='ml-3 text-xl'>Todos los Productos</span>
     </Link>
+        </>
+    )}
 
-    
-   
+    {isAuthenticated && (
+        <>
+         <Link 
+    href="/"
+    className='flex items-center mt-10 p-2 hover:bg-gray-300 rounded transition-all'
+    onClick={() => signOut({ callbackUrl: "/login" })}
+    >
+        <IoLogOutOutline  size={30}/>
+        <span className='ml-3 text-xl'>Salir</span>
+    </Link>
+        
+        </>
+    )}
+
+    {!isAuthenticated && (
+        <div className='flex flex-col mt-10 p-2'>
+    <span className='ml-3 text-xl bg-blue-100 rounded w-full font-semibold'>Eres estudiante? inicia sesion</span>
+    <Link 
+    href="/login"
+    className='flex items-center  hover:bg-gray-300 rounded transition-all'
+    >
+    <IoLogInOutline  size={40}/>
+    <span className='ml-3 text-xl'>Ingresar</span>
+    </Link>
+    </div>
+    )}
     </nav>
-
-
     </div>
   )
 }
