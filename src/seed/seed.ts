@@ -1,4 +1,4 @@
-interface products {
+interface product {
     id: string;
     title: string;
     price: number;
@@ -7,7 +7,7 @@ interface products {
     images: string[];
 
 }
-export const Mocking: products[] = [
+export const Mocking: product [] = [ 
     // --- Snacks y Comida ---
     {
         id: '3',
