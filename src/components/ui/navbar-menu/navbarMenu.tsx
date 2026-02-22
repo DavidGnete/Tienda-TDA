@@ -13,10 +13,12 @@ export const NavbarMenu = () => {
   return (
     <nav className='flex px-10 justify-between items-center w-full bg-green-600 h-20' >
       <div className='text-white font-bold'>
+        <Link  href="/">
         <span className='text-xl'>
           Tienda
         </span>
         <span className='font-bold'> | TDA</span>
+        </Link>
       </div>
 
       <div className='flex gap-10 items-center text-gray font-bold'>

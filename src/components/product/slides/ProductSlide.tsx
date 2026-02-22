@@ -28,8 +28,8 @@ interface Props {
 }
 
 export const ProductSlideShow = ({images, title, clasName}: Props) => {
-
     const [thumbsSwiper, setThumbsSwiper] = useState<SwiperObject>();
+
   return (
     <div className={clasName}>
 
@@ -60,7 +60,7 @@ export const ProductSlideShow = ({images, title, clasName}: Props) => {
             <SwiperSlide key={image}>
                 <ImageProducts 
                 width={1024}
-                height={700}
+                height={500}
                 src={image}
                 alt={title}
                 className="rounded-lg object-fill"
