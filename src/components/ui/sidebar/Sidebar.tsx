@@ -71,7 +71,7 @@ export const Sidebar = () => {
     <div className="w-full h-px bg-gray-300 my-10"></div>
 
     <Link 
-    href="/"
+    href="/admin"
     className='flex items-center mt-10 p-2 hover:bg-gray-300 rounded transition-all'
     >
         <LuListPlus  size={30}/>

@@ -13,7 +13,7 @@ export const ProductGridItem = ({product}:Props) => {
 
     return (
         <div className="rounded-md overflow-hidden fade-in">
-             <Link  href={`/product/${product.slug}`}>    
+             <Link  href={`/products/${product.slug}`}>    
     <div className='relative w-full aspect-square overflow-hidden rounded'>
         <ImageProducts
         src={displayImage}
@@ -21,6 +21,8 @@ export const ProductGridItem = ({product}:Props) => {
         className="object-cover rounded w-full h-full"
         width={500}
         height={500}
+        onMouseEnter={ () => setdisplayImages(product.images?.[1] ?? '' )}
+        onMouseLeave={ () => setdisplayImages(product.images?.[0] ?? '')}
         ></ImageProducts>
         
         </div>
@@ -29,7 +31,7 @@ export const ProductGridItem = ({product}:Props) => {
         <div className='p-4 flex flex-col '>
             <Link
             className='hover:text-blue-700'
-            href={`/product/${product.slug}`}>
+            href={`/products/${product.slug}`}>
             {product.title}
             </Link>
             <span className='font-bold'>${product.price} </span>

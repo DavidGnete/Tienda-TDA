@@ -19,6 +19,8 @@ export const ImageProducts = ({src, alt, className, width, height, style, onMous
         className={className}
         style={style}
         unoptimized
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
         />
     )
 }
