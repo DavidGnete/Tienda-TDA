@@ -1,6 +1,6 @@
 "use server";
 import { redirect } from "next/navigation";
-import { ProductForm } from "./product/[slug]/page";
+import ProductForm from "./product/[slug]/page";
 
 
 
