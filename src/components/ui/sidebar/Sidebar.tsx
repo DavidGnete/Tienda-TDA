@@ -82,7 +82,7 @@ export const Sidebar = () => {
 
     
     <Link 
-    href="/"
+    href="/admin/products"
     className='flex items-center mt-10 p-2 hover:bg-gray-300 rounded transition-all'
     >
         <IoListOutline  size={30}/>
