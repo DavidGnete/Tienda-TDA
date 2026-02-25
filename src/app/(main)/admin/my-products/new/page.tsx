@@ -1,22 +1,42 @@
 "use client";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useProducts } from "@/components/ProductContext/ProductContext";
 
 type ProductFormData = {
   title: string;
   price: number;
   description: string;
-  phone: string;
+  phone: number;
 };
 
 export default function ProductForm() {
+  const { addProduct } = useProducts(); // 2️⃣ sacas la función que necesitas
+  const router = useRouter();
   const { register, handleSubmit, formState: { errors } } = useForm<ProductFormData>();
   const [photos, setPhotos] = useState<File[]>([]);
   const [previews, setPreviews] = useState<string[]>([]);
 
-  const onSubmit = (data: ProductFormData) => {
-    console.log({ ...data, photos });
-  };
+  const onSubmit = async (data: ProductFormData) => {
+
+    const newProduct = {
+      title: data.title,
+      price: data.price,
+      description: data.description,
+      phone: String(data.phone),
+      slug: data.title.toLowerCase().replace(/ /g, "-").trim(),
+      id: crypto.randomUUID(),
+      images: previews, // las URLs temporales que ya tienes
+    };
+
+    addProduct(newProduct);
+
+    // 5️⃣ Redirigis
+    router.push("/");
+
+
+};
 
   const handlePhotos = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []).slice(0, 5);
