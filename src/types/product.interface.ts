@@ -5,6 +5,7 @@ export interface Product {
     slug: string;
     title:string;
     price: number;
+    phone?:number;
 }
 
 export interface ProductImage {

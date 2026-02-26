@@ -1,13 +1,14 @@
 "use client";
-import React from 'react'
-import { useBearStore } from '@/store';
 import { titleFont } from '@/services/TextFont';
 import { signIn, signOut, useSession } from "next-auth/react";
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
 export const NavbarMenu = () => {
   const { data: session } = useSession(); 
-  
+
+  const pathname = usePathname();
+  const adminPage = pathname.startsWith("/admin");
   const isAuthenticatedSuperAdmin = !!(session?.user.role === "super-admin");
   const isAuthenticated = !!session?.user.role;
 
@@ -32,7 +33,7 @@ export const NavbarMenu = () => {
           </>
       )}
 
-      {isAuthenticated && (
+      {isAuthenticated && !adminPage && (
         <>
         <div className='text-white font-bold'>
           <Link href="/">
@@ -43,7 +44,7 @@ export const NavbarMenu = () => {
           </Link>
         </div>
 
-          <Link href="/admin/products"
+          <Link href="/admin/my-products"
           className={`${titleFont.className} bg-black/30 px-3 py-1 rounded text-white`}>
           <p>Mis Productos</p>
           </Link>
@@ -53,17 +54,26 @@ export const NavbarMenu = () => {
           <p>+ Publicar</p>
           </Link>
       
-        {/* <button
-          onClick={() => signOut({callbackUrl: "/login" })}
-          className={`${titleFont.className} bg-red-500 px-3 py-1 rounded text-white`}
-        >
-          salir
-          </button> */}
           </>
-
       )}
-       
+      {isAuthenticated && adminPage &&(
+          <>
+        <div className='text-white font-bold'>
+          <Link href="/">
+            <span className='text-xl'>
+              Tienda
+            </span>
+            <span className='font-bold'> | TDA</span>
+          </Link>
+        </div>
 
+        <Link href='/admin/my-products/components' className="btn-primary">
+            Nuevo Producto
+        </Link>
+      
+          </>
+        
+      )}
     </nav>
       
   )

@@ -5,8 +5,12 @@ interface product {
     description: string;
     slug:string
     images: string[];
+    phone: number;
 
 }
+/* 
+quiero poner phone con numeros aleatorios a todo mi archivo */
+
 export const Mocking: product [] = [ 
     // --- Snacks y Comida ---
     {
@@ -20,6 +24,7 @@ export const Mocking: product [] = [
         ],
         slug: 'brownies-caseros-extra',
         price: 3500,
+        phone: 3001234567,
     },
     {
         id: '4',
@@ -32,6 +37,7 @@ export const Mocking: product [] = [
         ],
         slug: 'cafe-tinto-caliente',
         price: 1500,
+        phone: 3009876543,
     },
     {
         id: '5',
@@ -44,6 +50,7 @@ export const Mocking: product [] = [
         ],
         slug: 'sandwich-fresco-estudiante',
         price: 5000,
+        phone: 3002345678,
     },
     {
         id: '6',
@@ -56,6 +63,7 @@ export const Mocking: product [] = [
         ],
         slug: 'empanadas-carne-crujientes',
         price: 2500,
+        phone: 3003456789,
     },
     {
         id: '7',
@@ -68,6 +76,7 @@ export const Mocking: product [] = [
         ],
         slug: 'ensalada-frutas-saludable',
         price: 4500,
+        phone: 3004567890,
     },
 
     // --- Material Académico ---
@@ -82,6 +91,7 @@ export const Mocking: product [] = [
         ],
         slug: 'calculadora-cientifica-casio',
         price: 85000,
+        phone: 3005678901,
     },
     {
         id: '9',
@@ -94,6 +104,7 @@ export const Mocking: product [] = [
         ],
         slug: 'cuaderno-5-materias-nuevo',
         price: 12000,
+        phone: 3006789012,
     },
     {
         id: '10',
@@ -106,6 +117,7 @@ export const Mocking: product [] = [
         ],
         slug: 'kit-dibujo-tecnico',
         price: 45000,
+        phone: 3007890123,
     },
     {
         id: '11',
@@ -118,6 +130,7 @@ export const Mocking: product [] = [
         ],
         slug: 'bata-laboratorio-quimica',
         price: 30000,
+        phone: 3008901234,
     },
     {
         id: '12',
@@ -130,6 +143,7 @@ export const Mocking: product [] = [
         ],
         slug: 'libro-stewart-calculo',
         price: 60000,
+        phone: 3009012345,
     },
 
     // --- Tecnología y Gadgets ---
@@ -144,6 +158,7 @@ export const Mocking: product [] = [
         ],
         slug: 'mouse-logitech-inalambrico',
         price: 45000,
+        phone: 3000123456,
     },
     {
         id: '14',
@@ -156,7 +171,9 @@ export const Mocking: product [] = [
         ],
         slug: 'cargador-portatil-powerbank',
         price: 75000,
+        phone: 3001230987,
     },
+
     {
         id: '15',
         title: 'Audífonos Bluetooth JBL',
@@ -168,6 +185,7 @@ export const Mocking: product [] = [
         ],
         slug: 'audifonos-jbl-bluetooth',
         price: 120000,
+        phone: 3002345670,
     },
     {
         id: '16',
@@ -180,6 +198,7 @@ export const Mocking: product [] = [
         ],
         slug: 'usb-64gb-kingston',
         price: 25000,
+        phone: 3003456701,
     },
     {
         id: '17',
@@ -192,6 +211,7 @@ export const Mocking: product [] = [
         ],
         slug: 'adaptador-hdmi-vga',
         price: 18000,
+        phone: 3004567012,
     },
 
     // --- Servicios y Tutorías ---
@@ -206,6 +226,7 @@ export const Mocking: product [] = [
         ],
         slug: 'tutoria-algebra-lineal',
         price: 20000,
+        phone: 3005670123,
     },
     {
         id: '19',
@@ -218,6 +239,7 @@ export const Mocking: product [] = [
         ],
         slug: 'servicio-impresiones-laser',
         price: 200,
+        phone: 3006780123,
     },
     {
         id: '20',
@@ -230,6 +252,7 @@ export const Mocking: product [] = [
         ],
         slug: 'curso-excel-estudiantes',
         price: 50000,
+        phone: 3007890123,
     },
 
     // --- Otros ---
@@ -244,6 +267,7 @@ export const Mocking: product [] = [
         ],
         slug: 'sombrilla-portatil-negra',
         price: 15000,
+        phone: 3008901230,
     },
     {
         id: '22',
@@ -256,6 +280,7 @@ export const Mocking: product [] = [
         ],
         slug: 'termo-agua-deportes',
         price: 22000,
+        phone: 3009012301,
     },
     {
         id: '23',
@@ -268,6 +293,7 @@ export const Mocking: product [] = [
         ],
         slug: 'resaltadores-stabilo-pastel',
         price: 18000,
+        phone: 3000123012,
     },
     {
         id: '24',
@@ -280,6 +306,7 @@ export const Mocking: product [] = [
         ],
         slug: 'organizador-escritorio-madera',
         price: 35000,
+        phone: 3001230123,
     },
     {
         id: '25',
@@ -292,6 +319,7 @@ export const Mocking: product [] = [
         ],
         slug: 'gomas-eucalipto-menta',
         price: 2000,
+        phone: 3002340123,
     },
     {
         id: '26',
@@ -304,6 +332,7 @@ export const Mocking: product [] = [
         ],
         slug: 'mochila-antirrobo-gris',
         price: 95000,
+        phone: 3003450123,
     },
     {
         id: '27',
@@ -316,6 +345,7 @@ export const Mocking: product [] = [
         ],
         slug: 'tablero-acrilico-pequeno',
         price: 28000,
+        phone: 3004560123,
     },
     {
         id: '28',
@@ -328,6 +358,7 @@ export const Mocking: product [] = [
         ],
         slug: 'lampara-escritorio-led',
         price: 40000,
+        phone: 3005670123,
     },
     {
         id: '29',
@@ -340,6 +371,7 @@ export const Mocking: product [] = [
         ],
         slug: 'diccionario-ingles-oxford',
         price: 15000,
+        phone: 3006780123,
     },
     {
         id: '30',
@@ -352,5 +384,6 @@ export const Mocking: product [] = [
         ],
         slug: 'notas-adhesivas-postit',
         price: 8000,
+        phone: 3007890123,
     }
 ];
