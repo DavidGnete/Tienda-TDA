@@ -2,7 +2,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useProducts } from "@/components/ProductContext/ProductContext";
+
 
 type ProductFormData = {
   title: string;
@@ -12,7 +12,6 @@ type ProductFormData = {
 };
 
 export default function ProductForm() {
-  const { addProduct } = useProducts(); // 2️⃣ sacas la función que necesitas
   const router = useRouter();
   const { register, handleSubmit, formState: { errors } } = useForm<ProductFormData>();
   const [photos, setPhotos] = useState<File[]>([]);
@@ -30,7 +29,6 @@ export default function ProductForm() {
       images: previews, // las URLs temporales que ya tienes
     };
 
-    addProduct(newProduct);
 
     // 5️⃣ Redirigis
     router.push("/");

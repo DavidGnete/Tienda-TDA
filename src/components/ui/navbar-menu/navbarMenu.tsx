@@ -1,35 +1,70 @@
 "use client";
 import React from 'react'
 import { useBearStore } from '@/store';
-import { useEffect } from 'react';
+import { titleFont } from '@/services/TextFont';
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from 'next/link';
 
 export const NavbarMenu = () => {
   const { data: session } = useSession(); 
-  const openSiMenu = useBearStore((state) => state.openSideMenu);
+  
+  const isAuthenticatedSuperAdmin = !!(session?.user.role === "super-admin");
+  const isAuthenticated = !!session?.user.role;
 
 
   return (
-    <nav className='flex px-10 justify-between items-center w-full bg-green-600 h-20' >
+    <nav className='flex items-center justify-around w-full bg-green-600 h-20' >
+      {!isAuthenticated &&(
+      <>
       <div className='text-white font-bold'>
-        <Link  href="/">
-        <span className='text-xl'>
-          Tienda
-        </span>
-        <span className='font-bold'> | TDA</span>
-        </Link>
-      </div>
+          <Link href="/">
+            <span className='text-xl'>
+              Tienda
+            </span>
+            <span className='font-bold'> | TDA</span>
+          </Link>
+        </div>
+        <div className=''>
+            <Link href="/login"
+              className={`${titleFont.className} bg-black/30 p-2 rounded text-white`}
+            >Inicia Sesion</Link>
+          </div>
+          </>
+      )}
 
-      <div className='flex gap-10 items-center text-gray font-bold'>
-        <button
-        onClick={openSiMenu}
-        className="hidden sm:block m-2 p-2 hover:bg-gray-100 rounded-md cursor-pointer"
-        >Menu</button>
-      </div>
+      {isAuthenticated && (
+        <>
+        <div className='text-white font-bold'>
+          <Link href="/">
+            <span className='text-xl'>
+              Tienda
+            </span>
+            <span className='font-bold'> | TDA</span>
+          </Link>
+        </div>
+
+          <Link href="/admin/products"
+          className={`${titleFont.className} bg-black/30 px-3 py-1 rounded text-white`}>
+          <p>Mis Productos</p>
+          </Link>
+        
+          <Link href="/"
+          className={`${titleFont.className} bg-black/30 px-3 py-1 rounded text-white`}>
+          <p>+ Publicar</p>
+          </Link>
       
+        {/* <button
+          onClick={() => signOut({callbackUrl: "/login" })}
+          className={`${titleFont.className} bg-red-500 px-3 py-1 rounded text-white`}
+        >
+          salir
+          </button> */}
+          </>
 
+      )}
+       
 
     </nav>
+      
   )
 }

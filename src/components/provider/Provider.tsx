@@ -1,7 +1,8 @@
 "use client";
 
 import { SessionProvider } from "next-auth/react";
-import { ProductProvider } from "../ProductContext/ProductContext";
+import { AuthProvider } from "@/context/Authcontext";
+
 
 
 interface Props {
@@ -11,9 +12,7 @@ interface Props {
 export const Provider = ({children}:Props ) => {
   return (
     <SessionProvider>
-      <ProductProvider >
         {children}
-      </ProductProvider>
     </SessionProvider>
     
    

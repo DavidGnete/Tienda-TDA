@@ -1,4 +1,6 @@
 import React from 'react'
+import { Pagination } from '@/components';
+import { getPaginateProducts } from '@/actions';
 import { ImageProducts } from '@/components';
 import { Mocking } from '@/seed/seed';
 import { Product } from '@/types';
@@ -10,11 +12,19 @@ import Link from 'next/link';
 import { FaEdit } from 'react-icons/fa';
 
 interface Props {
-  products: Product[]
+  searchParams:{
+    page?: string
+  }
 }
 
 
-export default async function ProductsView({products = Mocking}:Props) {
+export default async function ProductsView({searchParams}:Props) {
+
+  const params = await searchParams
+
+  const page = params.page ? parseInt(params.page) : 1;
+
+  const {products, currentPage, totalPages} = await getPaginateProducts({page});
 
 
   /* const { products, currentPage, totalPages } = await getPaginateProductsWithImages({ page }); */
@@ -124,7 +134,7 @@ export default async function ProductsView({products = Mocking}:Props) {
           </tbody>
         </table>
 
-       {/*  <Pagination totalPages={ totalPages } /> */}
+        <Pagination totalPages={ totalPages } />
       </div>
     </>
   );
